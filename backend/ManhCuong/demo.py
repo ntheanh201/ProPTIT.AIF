@@ -1,23 +1,15 @@
 import numpy as np
 import os
 import queue
-<<<<<<< HEAD
 from thanhdatnv2712.google_api import googleAPI
 
 PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 user = googleAPI()
-=======
-from google_api import Text_to_speech
-from google_api import Speech_to_text 
 
-PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
->>>>>>> 3982ffd8becbd4c8a0e51da0fbd6e3282c0e0693
 
 class demo(object):
 
     def answer_0():
-<<<<<<< HEAD
         user.setContent("Mình có thể lưu trữ kiến thức của bạn, giúp bạn ôn tập kiến thức, giải đáp những câu hỏi của bạn dựa trên kho tri thức của nhân loại. Bạn muốn làm gì?")
         repath = user.text2speech()
         return repath
@@ -66,7 +58,6 @@ class demo(object):
         user.setContent("Mời bạn nói lại một lần nữa.")
         repath = user.text2speech()
         return repath 
-=======
         Text_to_speech("Mình có thể lưu trữ kiến thức của bạn, giúp bạn ôn tập kiến thức, giải đáp những câu hỏi của bạn dựa trên kho tri thức của nhân loại. Bạn muốn làm gì?")
 
     def answer_1():
@@ -95,7 +86,6 @@ class demo(object):
 
     def answer_wrong():
         Text_to_speech("Mời bạn nói lại một lần nữa.")
->>>>>>> 3982ffd8becbd4c8a0e51da0fbd6e3282c0e0693
 
     def record(time):
         open_record(time)
@@ -105,12 +95,8 @@ class demo(object):
     def start(self):
         queue.Queue(maxsize=200)
         while start==true:
-<<<<<<< HEAD
             user.setContent("Xin chào, mình là eve. Mình có thể giúp gì cho bạn?")
             user.text2speech()
-=======
-            Text_to_speech("Xin chào, mình là eve. Mình có thể giúp gì cho bạn?")
->>>>>>> 3982ffd8becbd4c8a0e51da0fbd6e3282c0e0693
             input = record(time) # get stream audio
             answer_0() # giới thiệu tính năng
             input = record(time) # get stream audio
@@ -129,16 +115,11 @@ class demo(object):
             input_1 = record(time) 
             save_answer(input_1) #lưu câu hỏi vào db
             Queue2.put(input_1)
-<<<<<<< HEAD
             #đọc lại câu hỏi và câu trả lời
             user.setContent(Queue2.get())  
             user.text2speech()
             user.setContent(Queue2.get())
             user.text2speech()
-=======
-            Text_to_speech(Queue2.get()) #đọc lại câu hỏi và câu trả lời    
-            Text_to_speech(Queue2.get())
->>>>>>> 3982ffd8becbd4c8a0e51da0fbd6e3282c0e0693
             answer_2_3()
             input = record(time) # yes
             answer_3() # đưa lên kho thành công
