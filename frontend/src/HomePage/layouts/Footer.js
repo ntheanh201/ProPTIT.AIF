@@ -3,12 +3,11 @@ import React, { Component } from 'react'
 export default class Footer extends Component {
     render() {
         return (
-            <section id="footer" className="space-big bg-blue">
+            <section id="footer" className="space-small bg-blue">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 mx-auto">
                             <div className="footer-content center">
-                                <img src="images/logo-2.png" alt="Image not loaded" />
                                 <ul className="footer-social">
                                     <li>
                                         <a href=""><i className="fab fa-facebook blue" /></a>
@@ -32,7 +31,7 @@ export default class Footer extends Component {
                                         <a href=""><i className="fab fa-linkedin blue" /></a>
                                     </li>
                                 </ul>
-                                <p>© All right reserved. Template created by <a href="http://davidrakic.xyz/">David</a>.</p>
+                                <p>© All right reserved.</p>
                             </div>
                         </div>
                     </div>

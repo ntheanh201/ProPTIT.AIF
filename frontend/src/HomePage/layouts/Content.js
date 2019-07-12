@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import Features from './components/Features';
-import Feedback from './components/Feedback';
-import Utilities from './components/Utilities';
-import ExpertService from './components/ExpertService';
-import Plans from './components/Plans';
-import Team from './components/Team';
-import Main from './components/Main';
+import Features from './components/contents/Features';
+import Feedback from './components/contents/Feedback';
+import Utilities from './components/contents/Utilities';
+import ExpertService from './components/contents/ExpertService';
+import Plans from './components/contents/Plans';
+import Team from './components/contents/Team';
+import Main from './components/contents/Main';
 
 export default class Content extends Component {
     render() {
