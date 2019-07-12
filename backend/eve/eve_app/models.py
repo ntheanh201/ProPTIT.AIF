@@ -14,4 +14,4 @@ class Answers(models.Model):
 class Questions(models.Model):
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
     list_answers = models.ManyToManyField(Answers)
-
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
