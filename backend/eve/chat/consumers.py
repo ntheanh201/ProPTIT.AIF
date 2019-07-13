@@ -6,9 +6,9 @@ from uuid import uuid4
 import base64
 from .google_api import GoogleAPI
 from io import BytesIO
-from pydub import AudioSegment
 from subprocess import Popen
 import subprocess
+from shutil import move
 api_caller = GoogleAPI()
 # translate_client = translate.Client(target_language='vi')
 
@@ -20,6 +20,7 @@ class MessageConsumer(AsyncJsonWebsocketConsumer):
         decoded = base64.decodebytes(data)
         # decoded base64.b64decode(data)
         return decoded
+
     async def receive_json(self, content, **kwargs):
         # request_type = content['request_type']
         data = content['data']
@@ -40,15 +41,18 @@ class MessageConsumer(AsyncJsonWebsocketConsumer):
         returncode = process.returncode
         text = ""
         text = api_caller.speech2text(outfile)
-        print("Text", text)
-        # if request_type == "send_file":
-        #     file_name = content['file_name']
-            
-        #     outpath = os.path.join(settings.BASE_DIR, "TMP_STORAGE")
-        #     if os.path.isdir(outpath) == False:
-        #         os.makedirs(outpath)
-        #     outpath = os.path.join(outpath, file_name)
-        #     fout = open(outpath, "wb")
-        #     fout.write(data)
-        #     fout.close()
-        await self.send_json(content={"event": "translation_response", "text": text})
+        
+        try:
+            os.remove(file_name)
+            os.remove(outfile)
+        except:
+            pass
+        
+        re_path = api_caller.text2speech(input_text=text)
+        des_dir = os.path.join(settings.BASE_DIR, "chat", "static", "outvoice")
+        if not os.path.isdir(des_dir):
+            os.makedirs(des_dir)
+        des_path = os.path.join(des_dir, os.path.basename(re_path))
+        move(re_path, des_path)
+        resp_url = "http://127.0.0.1:8123/static/outvoice/{}".format(os.path.basename(des_path))
+        await self.send_json(content={"status": "finish", "text": text, "audio_url": resp_url})

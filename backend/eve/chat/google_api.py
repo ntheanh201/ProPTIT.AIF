@@ -3,6 +3,8 @@ import io
 from google.cloud import speech
 from google.cloud import texttospeech
 # from django.conf import settings
+from uuid import uuid4
+import base64
 
 class GoogleAPI(object):
     # PATH = settings.BASE_DIR
@@ -10,32 +12,27 @@ class GoogleAPI(object):
     pathMP3 = ""
     
     def __init__(self):
-        self.content = ""
-        self.pathMP3 = ""
-    def setContent(self, content):
-        self.content = content
-    def getContent(self):
-        return self.content
-    def setPathMP3(self, pathMP3):
-        self.pathMP3 = pathMP3
-    def getPathMP3(self):
-        return self.pathMP3
-    def getPATH(self):
-        return self.PATH
+        # self.PATH = settings.BASE_DIR
+        self.PATH = os.path.dirname(__file__)
+        # pass
 
-    def text2speech(self):
+    def text2speech(self, input_text):
         client = texttospeech.TextToSpeechClient()
-        synthesis_input = texttospeech.types.SynthesisInput(text= self.content)
+        synthesis_input = texttospeech.types.SynthesisInput(text= input_text)
         voice = texttospeech.types.VoiceSelectionParams(
             language_code='vi-VN',
             ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE)
         audio_config = texttospeech.types.AudioConfig(
             audio_encoding=texttospeech.enums.AudioEncoding.MP3)
-        response = client.synthesize_speech(synthesis_input, voice, audio_config)     
-        rePATH = self.PATH + "/file/output.mp3"
+        response = client.synthesize_speech(synthesis_input, voice, audio_config)
+        out_dir = os.path.join(self.PATH, "TMP_STORAGE") 
+        if not os.path.isdir(out_dir):
+            os.makedirs(out_dir)
+        rePATH = os.path.join(out_dir, "{}.mp3".format(uuid4()))
         with open(rePATH, 'wb') as out:
             out.write(response.audio_content)
-            print('Audio content written to file "output.mp3"')
+        
+        # encoded_data = base64.b64decode(response.audio_content)
         return rePATH
     
     def speech2text(self, wav_path):
@@ -58,7 +55,7 @@ class GoogleAPI(object):
 
 if __name__ == "__main__":
     text = GoogleAPI()
-    res = text.speech2text("/home/nghiatd/workspace/ai_ws/Hackathon/proptit-aif/TMP_STORAGE/e3ab38bc-d86e-4b57-ad81-6f5cb430e63b.wav")
+    res = text.text2speech("Chào bạn, tôi có thể giúp gì cho bạn ?")
     print(res)
 
 
