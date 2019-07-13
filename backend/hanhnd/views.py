@@ -40,7 +40,7 @@ def set_many_answers_to_question(request, *args, **kwargs):
         question = request.POST.get("question")
         ques = Questions.objects.get(content = Content.objects.get(mean = question).values("id"))
         for ans in list_ans:
-            ques.list_answers.add(Answer.objects.get(content = Content.objects.get(mean = ans).values("id")))
+            ques.list_answers.add(Answers.objects.get(content = Content.objects.get(mean = ans).values("id")))
 
 
 
