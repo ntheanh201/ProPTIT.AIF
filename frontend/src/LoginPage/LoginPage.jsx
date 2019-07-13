@@ -39,7 +39,7 @@ class LoginPage extends React.Component {
         const { username, password, submitted } = this.state;
         return (
             <Fragment>
-                <Header showingLogin={false}/>
+                <Header showingLogin={false} showingAccount={false}/>
             <Section>
                 <Container>
                     <SignupContent>
@@ -104,7 +104,8 @@ export { connectedLoginPage as LoginPage };
 
 const Section = styled.section`
     position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
+    top: 200px;
+    bottom: 0; left: 0; right: 0;
     margin: auto;
 `;
 
