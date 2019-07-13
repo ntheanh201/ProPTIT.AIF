@@ -20,18 +20,18 @@ class HomePage extends React.Component {
         const { user } = this.props;
         return (
             <Fragment>
+                <Header
+                    left={240}
+                    showingLogin={false}
+                    showingAccount={true}
+                    username={user.username}
+                    fullName={user.firstName + " " + user.lastName}
+                    id={user.id}
+                    fixTop={false}
+                />
                 <Wrapper>
                     <SideBar />
                     <RightSide >
-                        {/* <Header
-                            left={240}
-                            showingLogin={false}
-                            showingAccount={true}
-                            username={user.username}
-                            fullName={user.firstName + " " + user.lastName}
-                            id={user.id}
-                            fixTop={false}
-                        /> */}
                         <ListItems >
                             {this.props.children}
                         </ListItems>
@@ -87,5 +87,5 @@ const Wrapper = styled.div`
 `;
 
 const RightSide = styled.div`
-
+    width: 100%;
 `;

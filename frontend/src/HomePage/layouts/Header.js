@@ -9,7 +9,7 @@ export default class Header extends Component {
         let fixedTop = fixTop ? "fixed-top" : null;
         return (
             <nav className={"navbar navbar-expand-lg navbar-sticky " + fixedTop}
-            // style={{marginLeft: left+'px'}} 
+            style={{left: left+'px'}} 
             >
                 <div className="container">
                     <a className="navbar-brand" href="/home">
