@@ -33,14 +33,12 @@ def verified_answer(request, *args, **kwargs):
         id_content = Content.objects.filter(mean = content).values("id")
         Answers.objects.filter(content = id).update(is_verified = True)
 
-
-def set_many_answers_to_question(request, *args, **kwargs):
+def submit_answer(request, *args, **kwargs):
     if request.method == 'POST':
-        list_ans = request.POST.get("list_ans")
-        question = request.POST.get("question")
+        question, answer = request.POST.get("question", "answer")
         ques = Questions.objects.get(content = Content.objects.get(mean = question).values("id"))
-        for ans in list_ans:
-            ques.list_answers.add(Answers.objects.get(content = Content.objects.get(mean = ans).values("id")))
+        ques.list_answers.add(Answers.objects.get(content = Content.objects.get(mean = answer).values("id")))
+
 
 
 
