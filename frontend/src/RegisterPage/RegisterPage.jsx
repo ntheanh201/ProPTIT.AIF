@@ -47,7 +47,7 @@ class RegisterPage extends React.Component {
         const { user, submitted } = this.state;
         return (
             <Fragment>
-            <Header showingLogin = {false} showingAccount={false}/>
+            <Header showingLogin = {false} showingAccount={false} fixTop={true} />
             <Section>
                 <Container>
                     <SignupContent>

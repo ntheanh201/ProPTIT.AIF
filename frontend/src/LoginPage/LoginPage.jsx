@@ -39,7 +39,7 @@ class LoginPage extends React.Component {
         const { username, password, submitted } = this.state;
         return (
             <Fragment>
-                <Header showingLogin={false} showingAccount={false}/>
+                <Header showingLogin={false} showingAccount={false} fixTop={true}/>
             <Section>
                 <Container>
                     <SignupContent>

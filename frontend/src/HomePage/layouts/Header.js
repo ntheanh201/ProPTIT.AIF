@@ -5,9 +5,12 @@ import AccMenu from './components/header/AccMenu';
 
 export default class Header extends Component {
     render() {
-        const { showingLogin, showingAccount, username, id } = this.props
+        const { showingLogin, showingAccount, fixTop, fullName, id, left } = this.props
+        let fixedTop = fixTop ? "fixed-top" : null;
         return (
-            <nav className="navbar navbar-expand-lg navbar-sticky fixed-top">
+            <nav className={"navbar navbar-expand-lg navbar-sticky " + fixedTop}
+            // style={{marginLeft: left+'px'}} 
+            >
                 <div className="container">
                     <a className="navbar-brand" href="/home">
                         <Img src="../../src/Assets/images/ta.jpg" alt="Image not loaded" /></a>
@@ -45,7 +48,7 @@ export default class Header extends Component {
                     }
                     {
                         showingAccount ? 
-                            <AccMenu id={id} username={username}/>
+                            <AccMenu id={id} fullName={fullName}/>
                             : null
                     }
                 </div>

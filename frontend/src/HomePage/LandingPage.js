@@ -10,7 +10,7 @@ export default class LandingPage extends Component {
     render() {
         return (
             <Fragment>
-                <Header showingLogin = {true} showingAccount={false}/>
+                <Header showingLogin = {true} showingAccount={false} fixTop={true}/>
                 <Content />
                 <Footer />
             </Fragment>

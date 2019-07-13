@@ -15,7 +15,7 @@ export default function AccMenu(props) {
     function handleClose() {
         setAnchorEl(null);
     }
-
+    
     return (
         <Fragment>
             <Button style={{
@@ -24,10 +24,9 @@ export default function AccMenu(props) {
                 fontSize: "18px",
                 color: "white"
             }} aria-controls="simple-menu" aria-haspopup="true"
-            // onClick={handleClick}
-            onMouseOver = {handleClick}
+            onClick = {handleClick}
             >
-                <i className="fas fa-user"></i><Label>{props.username}</Label>
+                <i className="fas fa-user"></i><Label>{props.fullName}</Label>
             </Button>
             <Menu
                 id="simple-menu"
@@ -39,13 +38,13 @@ export default function AccMenu(props) {
                 <MenuItem onClick={handleClose}>
                     <i className="fas fa-user"></i>
                     <StyledLink to={"/user?=" + props.id}>
-                        {props.username}
+                        {props.fullName}
                     </StyledLink>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
                     <i className="far fa-question-circle"></i>
                     <StyledLink className="nav-StyledLink btn-form anim" to="">
-                        {props.username}
+                        Guide
                     </StyledLink>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
