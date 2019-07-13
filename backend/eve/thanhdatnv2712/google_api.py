@@ -33,7 +33,7 @@ class googleAPI(object):
         audio_config = texttospeech.types.AudioConfig(
             audio_encoding=texttospeech.enums.AudioEncoding.MP3)
         response = client.synthesize_speech(synthesis_input, voice, audio_config)     
-        rePATH = self.PATH + "/output.mp3"
+        rePATH = self.PATH + "/file/output.mp3"
         with open(rePATH, 'wb') as out:
             out.write(response.audio_content)
             print('Audio content written to file "output.mp3"')
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     text.setContent(content)
     m = text.text2speech()
     print(m)
-    repath = text.getPATH() + "/test.wav"
+    repath = text.getPATH() + "/file/test.wav"
     print(repath)
     text.setPathMP3(repath)
     respon = text.speech2text()
