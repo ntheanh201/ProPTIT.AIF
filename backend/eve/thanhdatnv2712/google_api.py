@@ -71,6 +71,7 @@ if __name__ == "__main__":
     text.setContent(content)
     # text.setContent(content)
     repath = text.text2speech()
+    print(repath)
 
 
 
