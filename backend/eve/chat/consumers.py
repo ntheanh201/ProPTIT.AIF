@@ -55,4 +55,4 @@ class MessageConsumer(AsyncJsonWebsocketConsumer):
         des_path = os.path.join(des_dir, os.path.basename(re_path))
         move(re_path, des_path)
         resp_url = "http://127.0.0.1:8123/static/outvoice/{}".format(os.path.basename(des_path))
-        await self.send_json(content={"status": "finish", "text": text, "audio_url": resp_url})
+        await self.send_json(content={"status": "finish", "user": text, "bot": text, "audio_url": resp_url})
