@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Team PROPTIT.AIF</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body id="background">
+    <ul id="messages"></ul>
+    <form action="" class="form-style-9">
+		<ul>
+			<li>
+				<input id="m" autocomplete="off"  type="text" name="" 
+					class="field-style field-split align-left" placeholder="Nhập từ bạn muốn dịch" />
+				<button> Dịch </button>
+			</li>	
+		</ul>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="{% static 'js/reconnecting-websocket.min.js' %}"></script>
+	<script src="{% static 'js/chat.js' %}"></script>
+    
+</body>
+</html>

@@ -1,0 +1,5 @@
+django
+channels
+channels_redis
+asgi_redis
+google-cloud-translate
