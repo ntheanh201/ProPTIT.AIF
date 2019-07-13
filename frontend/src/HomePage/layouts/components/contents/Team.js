@@ -8,8 +8,7 @@ export default class Team extends Component {
                     <div className="row">
                         <div className="col-md-8 mx-auto center">
                             <div className="section-heading mb-space">
-                                <h1>Our expert team</h1>
-                                <p>Quo an dicit facete. At placerat scriptorem deterruisset quo. Ea probo invidunt eloquents, Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h1>Our Team</h1>
                             </div>
                         </div>
                     </div>
@@ -17,8 +16,8 @@ export default class Team extends Component {
                         <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div className="team-content center wow fadeInDown mb-space-mob">
                                 <img src="images/t1.png" alt="Image not loaded" />
-                                <h6>David Santana</h6>
-                                <p>UX/UI designer</p>
+                                <h6>Nguyễn Mạnh Cường</h6>
+                                <p></p>
                                 <ul className="team-social">
                                     <li>
                                         <a href=""><i className="fab fa-facebook-square anim" /></a>
@@ -35,8 +34,8 @@ export default class Team extends Component {
                         <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div className="team-content center wow fadeInDown mb-space-mob">
                                 <img src="images/t2.png" alt="Image not loaded" />
-                                <h6>John Nik</h6>
-                                <p>UX/UI designer</p>
+                                <h6>Trần Đai Nghĩa</h6>
+                                <p></p>
                                 <ul className="team-social">
                                     <li>
                                         <a href=""><i className="fab fa-facebook-square anim" /></a>
@@ -53,8 +52,8 @@ export default class Team extends Component {
                         <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div className="team-content center wow fadeInDown">
                                 <img src="images/t3.png" alt="Image not loaded" />
-                                <h6>Maya En</h6>
-                                <p>UX/UI designer</p>
+                                <h6>Nguyễn Viết Thành Đạt</h6>
+                                <p></p>
                                 <ul className="team-social">
                                     <li>
                                         <a href=""><i className="fab fa-facebook-square anim" /></a>
@@ -74,8 +73,8 @@ export default class Team extends Component {
                         <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div className="team-content center wow fadeInDown">
                                 <img src="images/t3.png" alt="Image not loaded" />
-                                <h6>Maya En</h6>
-                                <p>UX/UI designer</p>
+                                <h6>Nguyễn Đức Hạnh</h6>
+                                <p></p>
                                 <ul className="team-social">
                                     <li>
                                         <a href=""><i className="fab fa-facebook-square anim" /></a>
@@ -92,8 +91,8 @@ export default class Team extends Component {
                         <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div className="team-content center wow fadeInDown">
                                 <img src="images/t3.png" alt="Image not loaded" />
-                                <h6>Maya En</h6>
-                                <p>UX/UI designer</p>
+                                <h6>Nguyễn Thế Anh</h6>
+                                <p></p>
                                 <ul className="team-social">
                                     <li>
                                         <a href=""><i className="fab fa-facebook-square anim" /></a>

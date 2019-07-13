@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+import AccMenu from './components/header/AccMenu';
 
 export default class Header extends Component {
     render() {
-        const { showingLogin } = this.props
+        const { showingLogin, showingAccount, username, id } = this.props
         return (
             <nav className="navbar navbar-expand-lg navbar-sticky fixed-top">
                 <div className="container">
-                    <a className="navbar-brand" href="/home"><img src="images/logo.png" alt="Image not loaded" /></a>
+                    <a className="navbar-brand" href="/home">
+                        <Img src="../../src/Assets/images/ta.jpg" alt="Image not loaded" /></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup1" aria-controls="navbarNavAltMarkup1" aria-expanded="false" aria-label="Toggle navigation">
                         <i className="fas fa-align-right menu-icon" />
-                    </button>
+                    </button> 
                     <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup1">
                         <ul className="navbar-nav">
                             <li className="nav-item">
@@ -40,9 +43,19 @@ export default class Header extends Component {
                         </li>
                     </ul> : null
                     }
+                    {
+                        showingAccount ? 
+                            <AccMenu id={id} username={username}/>
+                            : null
+                    }
                 </div>
             </nav>
                 
         )
     }
 }
+
+const Img = styled.img`
+    // width: 20%;
+    width: 190px;
+`;
