@@ -1,19 +1,18 @@
-from django.shortcuts import render
-from .models import Answers, Content, Questions
-from django.contrib.auth.models import User
-
-# Create your views here.
 def create_question(request, *args, **kwargs):
     if request.method == 'POST':
         content = request.POST.get("content")
         owner = request.POST.get("owner")
-        owner_ = User.object.get(username = owner)
-        
+        owner_ = User.objects.get(username = owner)
         if owner != None:
-            if Content.objects.get(content = content) == None:
+            try:
+                Content.objects.get(mean = content)
+            except:
                 Content.objects.create(mean = content)
-                Questions.objects.create(content = Content.objects.get(content = content)
-                , user = owner_)
+            try:
+                Questions.objects.get(content = Content.objects.get(mean = content))
+            except:
+                Questions.objects.create(content = Content.objects.get(mean = content)
+                , owner = owner_)
 
 
 def create_answer(request, *args, **kwargs):
@@ -21,10 +20,17 @@ def create_answer(request, *args, **kwargs):
         content = request.POST.get("content")
         owner = request.POST.get("owner")
         owner_ = User.objects.get(username = owner)
-        if (owner_ != None):
-            if Content.object.get(content = content) == None:
+        if owner != None:
+            try:
+                Content.objects.get(mean = content)
+            except:
                 Content.objects.create(mean = content)
-                Answers.objects.create(content = Content.objects.get(content = content), is_contrib = True, owner = owner_)
+
+            try:
+                Answers.objects.get(content = Content.objects.get(mean = content))
+            except:
+                Answers.objects.create(content = Content.objects.get(mean = content)
+                , owner = owner_)
 
 def verified_answer(request, *args, **kwargs):
     if request.method == 'POST':
@@ -33,15 +39,13 @@ def verified_answer(request, *args, **kwargs):
 
 def submit_answer(request, *args, **kwargs):
     if request.method == 'POST':
-        question, answer = request.POST.get("question", "answer")
+        question = request.POST.get("question")
+        answer = request.POST.get("answer")
         ques = Questions.objects.get(content = Content.objects.get(mean = question))
         ques.list_answers.add(Answers.objects.get(content = Content.objects.get(mean = answer)))
 
 
-
-
-
-        
-
-
-        
+def create_user(request, *args, **kwargs):
+    if request.method == 'POST':
+        username, email, password = request.POST.get("username", "email", "password")
+        User.objects.create_user(username = username, email = email, password = password)
