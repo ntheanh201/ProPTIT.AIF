@@ -58,8 +58,7 @@ class demo(object):
         user.setContent("Mời bạn nói lại một lần nữa.")
         repath = user.text2speech()
         return repath 
-        Text_to_speech("Mình có thể lưu trữ kiến thức của bạn, giúp bạn ôn tập kiến thức, giải đáp những câu hỏi của bạn dựa trên kho tri thức của nhân loại. Bạn muốn làm gì?")
-
+        
     def answer_1():
         Text_to_speech("Bạn muốn lưu vào thư mục nào?")
 
@@ -83,6 +82,12 @@ class demo(object):
 
     def answer_5():
         Text_to_speech("Theo câu trả lời của Andy, Rối loạn trầm cảm là loại rối loạn khí sắc thường gặp trong tâm thần học. Bệnh do hoạt động của bộ não bị rối loạn gây nên tạo thành những biến đổi thất thường trong suy nghĩ hành vi và tác phong.")
+
+    def answer_6():
+        Text_to_speech("Cách mạng tháng 10 Nga diễn ra vào thời gian nào, ai là người đứng đầu")
+
+    def answer_7():
+        Text_to_speech("Chính xác, bạn có muốn ôn tập tiếp không?")
 
     def answer_wrong():
         Text_to_speech("Mời bạn nói lại một lần nữa.")
@@ -125,10 +130,14 @@ class demo(object):
             answer_3() # đưa lên kho thành công
             display_table() #upvote câu trả lời
             answer_4() #mình có thể giúp gì cho bạn
-            input = record(time) # hỏi một câu trên kho tri thức
-            answer_5() 
-            input = record(time)
-            answer_4() # Mình có thể giúp gì cho bạn
-            input = record(time) # Không
+            input = record(time) # trầm cảm là gì
+            answer_5() #trả lời
+            input = record(time) #tôi muốn ôn tập
+            answer_6() # lịch sử Nga
+            input = record(time) # câu trả lời
+            answer_7() #chính xác..
+            input = record(time) # câu trả lời
+            answer_4() #mình có thể giúp gì cho bạn
+            input = record(time) # không
 
 

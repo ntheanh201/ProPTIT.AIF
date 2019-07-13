@@ -10,9 +10,9 @@ def create_question(request, *args, **kwargs):
         owner_ = User.object.get(username = owner)
         
         if owner != None:
-            if Content.objects.filter(content = content).values("id") == None:
+            if Content.objects.get(content = content) == None:
                 Content.objects.create(mean = content)
-                Questions.objects.create(content = Content.objects.filter(content = content).values("id")
+                Questions.objects.create(content = Content.objects.get(content = content)
                 , user = owner_)
 
 
@@ -22,25 +22,21 @@ def create_answer(request, *args, **kwargs):
         owner = request.POST.get("owner")
         owner_ = User.objects.get(username = owner)
         if (owner_ != None):
-            if Content.object.filter(content = content).values("id") == None:
+            if Content.object.get(content = content) == None:
                 Content.objects.create(mean = content)
-                id_content = Content.object.filter(content = content).values("id")
-                Answers.objects.create(content = id, is_contrib = True, owner = owner_)
+                Answers.objects.create(content = Content.objects.get(content = content), is_contrib = True, owner = owner_)
 
 def verified_answer(request, *args, **kwargs):
     if request.method == 'POST':
         content = request.POST.get("content")
-        id_content = Content.objects.filter(mean = content).values("id")
-        Answers.objects.filter(content = id).update(is_verified = True)
+        Answers.objects.filter(content = Content.objects.get(mean = content)).update(is_verified = True)
 
-
-def set_many_answers_to_question(request, *args, **kwargs):
+def submit_answer(request, *args, **kwargs):
     if request.method == 'POST':
-        list_ans = request.POST.get("list_ans")
-        question = request.POST.get("question")
-        ques = Questions.objects.get(content = Content.objects.get(mean = question).values("id"))
-        for ans in list_ans:
-            ques.list_answers.add(Answer.objects.get(content = Content.objects.get(mean = ans).values("id")))
+        question, answer = request.POST.get("question", "answer")
+        ques = Questions.objects.get(content = Content.objects.get(mean = question))
+        ques.list_answers.add(Answers.objects.get(content = Content.objects.get(mean = answer)))
+
 
 
 
