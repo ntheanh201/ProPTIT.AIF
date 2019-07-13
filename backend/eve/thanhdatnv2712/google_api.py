@@ -21,6 +21,8 @@ class googleAPI(object):
         self.pathMP3 = pathMP3
     def getPathMP3(self):
         return self.pathMP3
+    def getPATH(self):
+        return self.PATH
 
     def text2speech(self):
         client = texttospeech.TextToSpeechClient()
@@ -37,31 +39,21 @@ class googleAPI(object):
             print('Audio content written to file "output.mp3"')
         return rePATH
     
-    # def mp3towav(self):
-
-    def speech2text(self, data):
+    def speech2text(self):
         client = speech.SpeechClient()
-
-        with io.open(data, 'rb') as audio_file:
+        with io.open(self.pathMP3, 'rb') as audio_file:
             content = audio_file.read()
-        stream = [content]
-        requests = (types.StreamingRecognizeRequest(audio_content=chunk)
-                    for chunk in stream)
+        audio = types.RecognitionAudio(content=content)
         config = types.RecognitionConfig(
             encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
-            sample_rate_hertz=16000,
-            language_code='en-US')
-        streaming_config = types.StreamingRecognitionConfig(config=config)
-        responses = client.streaming_recognize(streaming_config, requests)
-
-        for response in responses:
-            for result in response.results:
-                print('Finished: {}'.format(result.is_final))
-                print('Stability: {}'.format(result.stability))
-                alternatives = result.alternatives
-                for alternative in alternatives:
-                    print('Confidence: {}'.format(alternative.confidence))
-                    print(u'Transcript: {}'.format(alternative.transcript))
+            sample_rate_hertz=24000,
+            language_code='vi-VN')
+        response = client.recognize(config, audio)
+        ans = ""
+        for result in response.results:
+            ans += result.alternatives[0].transcript
+            # print(u'Transcript: {}'.format(result.alternatives[0].transcript))
+        return ans
 
     
 
@@ -69,9 +61,13 @@ if __name__ == "__main__":
     text = googleAPI()
     content = input()
     text.setContent(content)
-    # text.setContent(content)
-    repath = text.text2speech()
+    m = text.text2speech()
+    print(m)
+    repath = text.getPATH() + "/test.wav"
     print(repath)
+    text.setPathMP3(repath)
+    respon = text.speech2text()
+    print(respon)
 
 
 
