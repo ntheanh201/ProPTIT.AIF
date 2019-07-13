@@ -13,28 +13,99 @@ class demo(object):
         self.input = queue.Queue(maxsize=100)
         self.output = queue.Queue(maxsize=100)
 
+    def calc(s):
+        cv1 = ["bạn", "có", "thể", "làm", "những", "gì"]
+        cv2 = ["mình", "muốn", "lưu", "lại", "kiến", "thức"]
+        cv3 = ["thư","mục","vật","lí"]
+        cv4 = ["một", "câu", "hỏi", "ví", "dụ"]
+        cv5 = ["một", "câu", "trả", "lời", "ví", "dụ"]
+        cv6 = ["có"]
+        cv7 = ["không"]
+        cv8 = ["trầm", "cảm", "là", "gì"]
+        cv9 = ["tôi", "muốn", "ôn", "tập", "lại", "kiến", "thức", "trong", "lĩnh", "vực", "lịch", "sử"]
+        cv10 = ["cách", "mạng", "tháng", "mười", "nổ", "ra", "vào", "ngày", "hai", "tư", "tháng", "mười", "năm", "một", "chín", "mười", "bảy"]
+        temp = s.split(" ")
+        if len(temp) <=3:
+            for t in temp:
+                if t == cv6[0]: return 6
+                if t == cv7[0]: return 7
+            return 7
+        else :
+            count = 0
+            for t in temp:
+                for i in cv1:
+                    if t == i:
+                        count+=1
+                        break
+            if count >=5: return 1
+            
+            count = 0
+            for t in temp:
+                for i in cv2:
+                    if t == i:
+                        count+=1
+                        break
+            if count >=5: return 2
+            
+            count = 0
+            for t in temp:
+                for i in cv3:
+                    if t == i:
+                        count+=1
+                        break
+            if count >=2: return 3
+            
+            for t in temp:
+                if t == "hỏi": return 4
+            
+            for t in temp:
+                if t == "trả": 
+                    for k in temp:
+                        if k == "lời": return 5
+            
+            for t in temp:
+                if t == "trầm": 
+                    for k in temp:
+                        if k == "cảm": return 8
+            
+            count = 0
+            for t in temp:
+                for i in cv9:
+                    if t == i:
+                        count+=1
+                        break
+            if count >=9: return 9
+
+            count = 0
+            for t in temp:
+                for i in cv10:
+                    if t == i:
+                        count+=1
+                        break
+            if count >=10: return 10
+
     def process(input):
         status = True
         s = ""
-        if input == "bạn có thể làm những gì" :
+        if calc(input) == 1 :
             s = "Mình có thể lưu trữ kiến thức của bạn, giúp bạn ôn tập kiến thức, giải đáp những câu hỏi của bạn dựa trên kho tri thức của nhân loại. Bạn muốn làm gì?"
-        if input == "mình muốn lưu lại kiến thức":
+        if calc(input) == 2:
             s = "Bạn muốn lưu vào thư mục nào?"
-        if input == "thư mục vật lí":
+        if calc(input) == 3:
             s = "Bạn có thể lựa chọn 3 cách để lưu kiến thức"
-        if input == "một câu hỏi ví dụ":
+        if calc(input) == 4:
             s = "Mời bạn đặt câu trả lời."
-        if input == "một câu trả lời ví dụ":
+        if calc(input) == 5:
             s = "Cám ơn bạn đã cung cấp thêm tri thức cho mình. Bạn có muốn đưa kiến thức này lên kho tri thức không?"
-        if input == "có":
+        if calc(input) == 6:
             s = "Mình đã đưa lên thành công, vì câu hỏi của bạn có nhiều câu trả lời, bạn có thể upvote những câu trả lời chính xác nhất."
-        if input == "trầm cảm là gì":
+        if calc(input) == 8:
             s = "Rối loạn trầm cảm là loại rối loạn khí sắc thường gặp trong tâm thần học. Bệnh do hoạt động của bộ não bị rối loạn gây nên tạo thành những biến đổi thất thường trong suy nghĩ hành vi và tác phong."
-        if input == "tôi muốn ôn tập lại kiến thức trong lĩnh vực lịch sử":
-            s = "Cách mạng tháng 10 Nga diễn ra vào thời gian nào, ai là người đứng đầu"
-        if input == "cách mạng tháng mười nổ ra vào ngày hai tư tháng mười năm một chín mười bảy, do lenin và đảng bon sê víc lãnh đạo":
+        if calc(input) == 9:
+            s = "Cách mạng tháng 10 Nga diễn ra vào thời gian nào"
+        if calc(input) == 10:
             s = "Chính xác, bạn có muốn ôn tập tiếp không?"
-        if input == "không":
+        if calc(input) == 7:
             status = False
         return s, status
     
