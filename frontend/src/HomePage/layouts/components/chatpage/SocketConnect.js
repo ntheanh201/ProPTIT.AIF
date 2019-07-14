@@ -44,7 +44,7 @@ class SocketConnect extends Component {
       record: true,
       computer_turn: false
     });
-    setTimeout(this.stopRecording, 3000);
+    setTimeout(this.stopRecording, 5000);
   }
 
   stopRecording = () => {

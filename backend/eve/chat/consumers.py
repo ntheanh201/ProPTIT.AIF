@@ -9,10 +9,15 @@ from io import BytesIO
 from subprocess import Popen
 import subprocess
 from shutil import move
+from .scenario import Demo
 api_caller = GoogleAPI()
 # translate_client = translate.Client(target_language='vi')
 
 class MessageConsumer(AsyncJsonWebsocketConsumer):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.demo_scenario = Demo()
+
     @staticmethod
     def getData(uri):
         head, data = uri.split(',')
@@ -41,18 +46,24 @@ class MessageConsumer(AsyncJsonWebsocketConsumer):
         returncode = process.returncode
         text = ""
         text = api_caller.speech2text(outfile)
-        
         try:
             os.remove(file_name)
             os.remove(outfile)
         except:
             pass
         
-        re_path = api_caller.text2speech(input_text=text)
+        
+        
+        status, answer = self.demo_scenario.process(text)
+        re_path = api_caller.text2speech(input_text=answer)
         des_dir = os.path.join(settings.BASE_DIR, "chat", "static", "outvoice")
         if not os.path.isdir(des_dir):
             os.makedirs(des_dir)
         des_path = os.path.join(des_dir, os.path.basename(re_path))
         move(re_path, des_path)
         resp_url = "http://127.0.0.1:8123/static/outvoice/{}".format(os.path.basename(des_path))
-        await self.send_json(content={"status": "finish", "user": text, "bot": text, "audio_url": resp_url})
+        if status == False:
+            self.demo_scenario = Demo()
+            await self.send_json(content={"status": "finish", "user": text, "bot": answer, "audio_url": resp_url})
+        else:
+            await self.send_json(content={"status": "continue", "user": text, "bot": answer, "audio_url": resp_url})
