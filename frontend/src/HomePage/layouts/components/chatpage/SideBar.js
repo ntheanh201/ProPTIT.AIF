@@ -1,68 +1,44 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
-}));
-
-export default function SideBar() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <div className={classes.toolbar} style={{minHeight: '100px'}} />
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </div>
-  );
+export default class SideBar extends Component {
+  render() {
+    return (
+      <Side tabIndex="0">
+        <div className="smartphone-menu-trigger"></div>
+        <Avatar>
+          <img src="../../../../src/Assets/images/bot.png" style={{width: '70%', marginTop: '40px'}}/>
+          <Title>Eve</Title>
+        </Avatar>
+        <Content>
+          "Xin chào, tôi là Eve - trợ lí ảo giúp bạn học tập dễ hơn"
+        </Content>
+      </Side>
+    )
+  }
 }
+const Side = styled.div`
+  background-color: #fffff;
+  // height:100vh;
+  width: 25%;
+  top:0;
+  left:0;
+  z-index:5;
+  outline:none;
+`;
+
+const Avatar = styled.div`
+  text-align: center;
+`;
+
+const Title = styled.h2`
+  margin-top: 10%;
+  font-weight: bold;
+`;
+
+const Content = styled.div`
+  font-size: 20px;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+`;

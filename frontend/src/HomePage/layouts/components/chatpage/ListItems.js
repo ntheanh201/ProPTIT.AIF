@@ -61,7 +61,7 @@ const styles = theme => ({
 class ListItems extends Component {
 
   isBot = (name) => {
-    return (name === 'bot') ? 'bot' : "user";
+    return (name === 'bot') ? 'bot' : 'user';
   }
 
   render() {
@@ -76,8 +76,15 @@ class ListItems extends Component {
         <StyledPaper square className={classes.paper}>
           <List className={classes.list}>
             {messages.map(({ name, text }, index) =>
-              <Fragment key={index}><ListItem button><Avatar alt="Profile Picture" src={'../../../../src/Assets/images/' + this.isBot(name) + ".png"} />
-                <StyledListItemText primary={this.isBot(name) === 'user' ? 'Me' : 'Bot'} secondary={text} /></ListItem></Fragment>
+              
+            (   this.isBot(name) === 'bot' ? <Fragment key={index}><ListItem button><Avatar alt="Profile Picture" src='../../../../src/Assets/images/bot.png' />
+                <StyledListItemText primary="Eve" secondary={text} /></ListItem></Fragment> : 
+                <Fragment key={index}><ListItem button>
+                <StyledListItemText style={{textAlign: 'right'}} primary="Tôi" secondary={text} /></ListItem></Fragment>
+            )
+
+              // <Fragment key={index}><ListItem button><Avatar alt="Profile Picture" src={'../../../../src/Assets/images/' + this.isBot(name) + ".png"} />
+              //   <StyledListItemText primary={this.isBot(name) === 'user' ? 'Me' : 'Bot'} secondary={text} /></ListItem></Fragment>
             )}
           </List>
         </StyledPaper>
@@ -91,11 +98,12 @@ ListItems.propTypes = {
 };
 
 export default withStyles(styles)(ListItems);
+
 const StyledListItemText = styled(ListItemText)`
   margin-left: 1%;
 `;
 
 const StyledPaper = styled(Paper)`
   overflow: auto;
-  height: 620px;
+  height: 630px;
 `;

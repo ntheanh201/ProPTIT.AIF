@@ -6,6 +6,7 @@ import ListItems from './layouts/components/chatpage/ListItems';
 import styled from 'styled-components'
 import SideBar from './layouts/components/chatpage/SideBar';
 import SocketConnect from './layouts/components/chatpage/SocketConnect';
+import SideBarRight from './layouts/components/chatpage/SideBarRight';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -33,7 +34,6 @@ class HomePage extends React.Component {
             messages: message.user !== "" ? [...messages, { name: 'user', text: message.user }, { name: 'bot', text: message.bot }] : [...messages]
         })
 
-
     }
 
     render() {
@@ -41,7 +41,7 @@ class HomePage extends React.Component {
         return (
             <Fragment>
                 <Header
-                    left={240}
+                    left={0}
                     showingLogin={false}
                     showingAccount={true}
                     username={user.username}
@@ -55,6 +55,7 @@ class HomePage extends React.Component {
                         <ListItems messages={this.state.messages} />
                         <SocketConnect createMessage={this.createMessage} />
                     </RightSide>
+                    <SideBarRight />
                 </Wrapper>
             </Fragment>
         );
