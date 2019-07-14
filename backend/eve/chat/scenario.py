@@ -24,6 +24,7 @@ class Demo:
             if i == "lưu" or i == "thêm": return 1
         for i in temp:
             if i == "ôn" or i == "tập": return 2
+        if len(temp) <= 3: return 0
         for i in temp:
             if i == "không": return 0
         return -1
@@ -41,6 +42,8 @@ class Demo:
                 self.select = 2
                 bot_answer = self.queue_2.get()
                 return status, bot_answer
+            if self.calc(text_input) == -1:
+                return status, bot_answer
         
         elif self.select == 1:
             if self.calc(text_input)==0:
@@ -51,6 +54,7 @@ class Demo:
             else:
                 bot_answer = self.queue_1.get()
                 return status, bot_answer
+
         
         elif self.select == 2:
             if self.calc(text_input)==0:

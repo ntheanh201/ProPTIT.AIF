@@ -40,9 +40,11 @@ class GoogleAPI(object):
         with io.open(wav_path, 'rb') as audio_file:
             content = audio_file.read()
         audio = speech.types.RecognitionAudio(content=content)
+        cap_speech_context = speech.types.SpeechContext(phrases=["không"])
         config = speech.types.RecognitionConfig(
             encoding= speech.enums.RecognitionConfig.AudioEncoding.LINEAR16,
             sample_rate_hertz=48000,
+            speech_contexts=[cap_speech_context,],
             language_code='vi-VN')
         response = client.recognize(config, audio)
         ans = ""
