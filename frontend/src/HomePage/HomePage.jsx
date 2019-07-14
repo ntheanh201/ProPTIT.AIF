@@ -1,19 +1,39 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, memo } from 'react';
 import { connect } from 'react-redux';
 import { userActions } from '../_actions';
 import Header from './layouts/Header';
 import ListItems from './layouts/components/chatpage/ListItems';
 import styled from 'styled-components'
 import SideBar from './layouts/components/chatpage/SideBar';
+import SocketConnect from './layouts/components/chatpage/SocketConnect';
 
 class HomePage extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            messages: [{
+                name: 'bot',
+                text: 'Chào bạn, tôi có thể giúp gì cho bạn?'
+            }
+            ],
+        }
+    }
+
     componentDidMount() {
         this.props.dispatch(userActions.getAll());
     }
 
     handleDeleteUser(id) {
         return (e) => this.props.dispatch(userActions.delete(id));
+    }
+
+    createMessage = (message) => {
+        const { messages } = this.state
+        this.setState({
+            messages: message.user !== "" ? [...messages, { name: 'user', text: message.user }, { name: 'bot', text: message.bot }] : [...messages]
+        })
+
+
     }
 
     render() {
@@ -32,39 +52,10 @@ class HomePage extends React.Component {
                 <Wrapper>
                     <SideBar />
                     <RightSide >
-                        <ListItems >
-                            {this.props.children}
-                        </ListItems>
+                        <ListItems messages={this.state.messages} />
+                        <SocketConnect createMessage={this.createMessage} />
                     </RightSide>
-
                 </Wrapper>
-
-                {/* <div className="row">
-                    <div className="col-md-6 col-md-offset-3" style={{}}>
-                        <h1>Hi {user.firstName}!</h1>
-                        <p>You're logged in with React!!</p>
-                        <h3>All registered users:</h3>
-                        {users.loading && <em>Loading users...</em>}
-                        {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-                        {users.items &&
-                            <ul>
-                                {users.items.map((user, index) =>
-                                    <li key={user.id}>
-                                        {user.firstName + ' ' + user.lastName}
-                                        {
-                                            user.deleting ? <em> - Deleting...</em>
-                                                : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
-                                                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
-                                        }
-                                    </li>
-                                )}
-                            </ul>
-                        }
-                        <p>
-                            <Link to="/login">Logout</Link>
-                        </p>
-                    </div>
-                </div> */}
             </Fragment>
         );
     }
