@@ -9,15 +9,8 @@ export default class Main extends Component {
                         <div className="col-lg-6 col-md-10 col-sm-12 col-xs-12 al-lft">
                             <div className="intro">
                                 <div className="intro-content mt80">
-                                    <h1 className="tagline typer">Innovative way to design your life</h1>
-                                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. It used very often, because Lorem is the best</p>
-                                    <div className="subscriber-form auto">
-                                        <form id="mc-form">
-                                            <label className="mt10" htmlFor="mc-email" />
-                                            <input type="email" id="mc-email" placeholder="Enter Your Email" />
-                                            <button type="submit" className="plus-btn anim">Sub</button>
-                                        </form>
-                                    </div>
+                                    <h1 className="tagline typer">Mở ra kỷ nguyên học tập mới.</h1>
+                                    <p>Việc học tập truyền thống đang ngày càng trở nên nhàm chán trong thời kỳ hiện đại. Chúng tôi sẽ cung cấp cho bạn một trợ lý ảo giúp bạn có thể ôn tập mọi lúc mọi nơi. Hãy tham gia cùng chúng tôi!</p>
                                 </div>
                             </div>
                         </div>
