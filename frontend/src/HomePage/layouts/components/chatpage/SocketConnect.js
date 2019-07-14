@@ -131,7 +131,7 @@ class SocketConnect extends Component {
 const Wrapper = styled.div`
   bottom: -20px;
   position: absolute;
-  left: 55%;
+  left: 50%;
   transform: translate(-50%, -50%);
 `;
 

@@ -8,7 +8,7 @@ export default class Header extends Component {
         const { showingLogin, showingAccount, fixTop, fullName, id, left } = this.props
         let fixedTop = fixTop ? "fixed-top" : null;
         return (
-            <nav className={"navbar navbar-expand-lg navbar-sticky " + fixedTop}
+            <Nav className={"navbar navbar-expand-lg navbar-sticky " + fixedTop}
             style={{left: left+'px'}} 
             >
                 <div className="container">
@@ -20,29 +20,29 @@ export default class Header extends Component {
                     <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup1">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="/home">Home</a>
+                                <a className="nav-link" href="/home">Trang chủ</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#features">Features</a>
+                                <a className="nav-link" href="#features">Lĩnh vực</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#about">About</a>
+                                <a className="nav-link" href="#about">Tính năng</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#service">Service</a>
+                                <a className="nav-link" href="#service">Dịch vụ</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#contact">Contact</a>
+                                <a className="nav-link" href="#contact">Liên hệ</a>
                             </li>
                         </ul>
                     </div>
                     {showingLogin ?
                     <ul className="nav navbar-nav pull-right nav-help mob-hide">
                         <li className="nav-item item-cart">
-                            <Link className="nav-link btn-form anim" to="/login">Login</Link>
+                            <Link className="nav-link btn-form anim" to="/login">Đăng nhập</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link btn-form anim" to="/register">Join us</Link>
+                            <Link className="nav-link btn-form anim" to="/register">Tham gia</Link>
                         </li>
                     </ul> : null
                     }
@@ -52,11 +52,15 @@ export default class Header extends Component {
                             : null
                     }
                 </div>
-            </nav>
+            </Nav>
                 
         )
     }
 }
+
+const Nav = styled.nav`
+    font-family: "Times New Roman", Times, serif!important;
+`;
 
 const Img = styled.img`
     // width: 20%;

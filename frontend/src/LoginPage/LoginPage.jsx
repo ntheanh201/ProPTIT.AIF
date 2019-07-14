@@ -45,10 +45,10 @@ class LoginPage extends React.Component {
                     <SignupContent>
                         <SignupImage>
                             <figure><img src="../src/Assets/images/eve.png" alt="sing up image" /></figure>
-                            <SignupImageLink to="/register">Create an account</SignupImageLink>
+                            <SignupImageLink to="/register">Tạo một tài khoản</SignupImageLink>
                         </SignupImage>
                         <SignupForm>
-                            <FormTitle>Login</FormTitle>
+                            <FormTitle>Đăng nhập</FormTitle>
                             <RegisterForm onSubmit={(e) => this.handleSubmit(e)}>
                                 <FormGroup>
                                     <label htmlFor="username">
@@ -56,7 +56,7 @@ class LoginPage extends React.Component {
                                     </label>
                                     <input
                                         value={username} onChange={(e) => this.handleChange(e)}
-                                        type="text" name="username" id="username" placeholder="Your Username" />
+                                        type="text" name="username" id="username" placeholder="Username" />
                                     {submitted && !username &&
                                         <div className="help-block">Username is required</div>
                                     }
@@ -67,7 +67,7 @@ class LoginPage extends React.Component {
                                     </label>
                                     <input
                                         value={password} onChange={(e) => this.handleChange(e)}
-                                        type="password" name="password" id="pass" placeholder="Your Password" />
+                                        type="password" name="password" id="pass" placeholder="Password" />
                                     {submitted && !password &&
                                         <div className="help-block">Password is required</div>
                                     }

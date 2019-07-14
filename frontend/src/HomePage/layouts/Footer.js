@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Footer extends Component {
     render() {
         return (
-            <section id="footer" className="space-small bg-blue">
+            <section id="footer" className="">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 mx-auto">
@@ -19,19 +19,13 @@ export default class Footer extends Component {
                                         <a href=""><i className="fab fa-github blue" /></a>
                                     </li>
                                     <li>
-                                        <a href=""><i className="fab fa-vimeo blue" /></a>
-                                    </li>
-                                    <li>
                                         <a href=""><i className="fab fa-youtube blue" /></a>
-                                    </li>
-                                    <li>
-                                        <a href=""><i className="fab fa-instagram blue" /></a>
                                     </li>
                                     <li>
                                         <a href=""><i className="fab fa-linkedin blue" /></a>
                                     </li>
                                 </ul>
-                                <p>© All right reserved.</p>
+                                <p>© ProPTIT.AIF</p>
                             </div>
                         </div>
                     </div>

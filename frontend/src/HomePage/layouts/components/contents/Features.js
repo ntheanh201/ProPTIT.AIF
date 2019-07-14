@@ -8,63 +8,51 @@ export default class Features extends Component {
                     <div className="row">
                         <div className="col-md-8 mx-auto center">
                             <div className="section-heading">
-                                <h1>Super fetaures</h1>
-                                <p>Quo an dicit facete. At placerat scriptorem deterruisset quo. Ea probo invidunt eloquents, Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h1>LĨNH VỰC</h1>
+                                <p>Nhằm đáp ứng nhu cầu ôn tập các môn học khoa học tự nhiên, khoa học xã hội,...</p>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-space">
                             <div className="features-box wow fadeInDown" data-wow-duration="1s">
-                                <img src="images/s1.png" className="left img-fluid" alt="Image not loaded" />
                                 <div className="features-content">
-                                    <h6>Supper fast</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <h6>LỊCH SỬ</h6>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-space">
                             <div className="features-box wow fadeInDown" data-wow-duration="1s">
-                                <img src="images/r3.png" className="left img-fluid" alt="Image not loaded" />
                                 <div className="features-content">
-                                    <h6>Clean layout</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <h6>ĐỊA LÝ</h6>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-space">
                             <div className="features-box wow fadeInDown" data-wow-duration="1s">
-                                <img src="images/h1.png" className="left img-fluid" alt="Image not loaded" />
                                 <div className="features-content">
-                                    <h6>Sencurity</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <h6>NGOẠI NGỮ</h6>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-space-mob">
                             <div className="features-box wow fadeInDown" data-wow-duration="1s">
-                                <img src="images/f1.png" className="left img-fluid" alt="Image not loaded" />
                                 <div className="features-content">
-                                    <h6>Modern</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <h6>VĂN HỌC</h6>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-space-mob">
                             <div className="features-box wow fadeInDown" data-wow-duration="1s">
-                                <img src="images/whyus.png" className="left img-fluid" alt="Image not loaded" />
                                 <div className="features-content">
-                                    <h6>Free update</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <h6>CÔNG NGHỆ</h6>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div className="features-box wow fadeInDown" data-wow-duration="1s">
-                                <img src="images/ab3.png" className="left img-fluid" alt="Image not loaded" />
                                 <div className="features-content">
-                                    <h6>Integration</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <h6>KINH TẾ</h6>
                                 </div>
                             </div>
                         </div>
